@@ -61,6 +61,9 @@ public class RestConfiguration extends Configuration{
     public SwaggerBundleConfiguration swaggerBundleConfiguration;
 }
 ```
+> Referencia a [ejemplo](https://github.com/dropwizard/dropwizard/blob/master/dropwizard-example/src/main/java/com/example/helloworld/HelloWorldConfiguration.java) básico
+
+
 * Adicionar al `pom.xml` del modulo `rest` la siguiente dependencia:
 
 ```xml
@@ -114,7 +117,7 @@ public class ApiRestService extends Application<RestConfiguration>{
                     Environment environment) {
     }
 ```
-* Adicionar pluins de contrucción del jar
+* Adicionar plugins de contrucción del jar
 ```xml
     <build>
 	<plugins>
@@ -171,7 +174,116 @@ public class ApiRestService extends Application<RestConfiguration>{
     </build>
 ```
 
+* Crear clase ejemplo `VersionResource.java`
+
+```java
+import com.codahale.metrics.annotation.Timed;
+import com.isortegah.dtos.res.version.VersionDTO;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+/**
+ *
+ * @author ISORTEGAH
+ */
+@Path("/version")
+@Api(value = "/version")
+@Produces(MediaType.APPLICATION_JSON)
+public class VersionResource {
+    @GET
+    @Timed
+    @ApiOperation(value = "Obtiene la información de la versión", position = 0)
+    public VersionDTO version() {
+        
+       return new VersionDTO();
+       
+    }
+}
+```
+
+* Adicionar modulo `dtos`
+
+![alt text](imgs/proyecto1.png)
+
+* Crear la clase `VersionDTO.java`
 
 
-Referencia a [ejemplo](https://github.com/dropwizard/dropwizard/blob/master/dropwizard-example/src/main/java/com/example/helloworld/HelloWorldConfiguration.java) básico
+import com.fasterxml.jackson.annotation.JsonProperty;
+```java
+/**
+ *
+ * @author ISORTEGAH
+ */
+public class VersionDTO {
+    
+    @JsonProperty
+    private String nombre = "Versión 0.0.1-SNAPSHOT";
 
+    @JsonProperty
+    private String numero = "0.0.1";
+    
+    @JsonProperty
+    private String autor = "ISORTEGAH";
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
+
+    public String getNombre() {
+            return nombre;
+    }
+
+    public void setNombre(String nombre) {
+            this.nombre = nombre;
+    }
+
+    public String getNumero() {
+            return numero;
+    }
+
+    public void setNumero(String numero) {
+            this.numero = numero;
+    }
+    
+}
+```
+* Adicionar la dependencia del modulo `dtos` al `pom.xml` del modulo `rest`
+
+```xml
+<dependency>
+    <groupId>${project.groupId}</groupId>
+    <artifactId>dtos</artifactId>
+    <version>${project.version}</version>
+    <type>jar</type>
+</dependency>  
+```
+
+* Registrar el servicio en `ApiRestService.java`
+```java
+@Override
+    public void run(RestConfiguration configuration,
+                    Environment environment) {
+        environment.jersey().register(new VersionResource());
+    }
+```
+
+## Configuración ejecución en NetBeans
+
+* Adicionar `Configutarion` sobre modulo `rest`  
+![Alt Text](imgs/netbeans3.png)
+
+* Registrar la configuración  
+![Alt Text](imgs/netbeans4.png)
+
+* Seleccionar la opción `Run` y dentro seleccionar la configuración adicionada con los siguientes parametros:
+> Main Class: com.isortegah.rest.ApiRestService  
+> Arguments: server config.yml  
+![Alt Text](imgs/netbeans5.png)

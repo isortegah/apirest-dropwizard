@@ -8,6 +8,7 @@
     <name>ApiRESTful</name>
     <modules>
         <module>rest</module>
+        <module>dtos</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

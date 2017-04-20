@@ -1,6 +1,6 @@
 baseUrl: http://localhost
 swagger:
-    resourcePackage: com.corpfolder.rest.resources
+    resourcePackage: com.isortegah.rest.resources
 server:
   applicationConnectors:
     - type: http

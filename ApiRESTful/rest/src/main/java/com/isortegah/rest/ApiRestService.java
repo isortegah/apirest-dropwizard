@@ -1,5 +1,6 @@
 package com.isortegah.rest;
 
+import com.isortegah.rest.resources.VersionResource;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
@@ -28,6 +29,7 @@ public class ApiRestService extends Application<RestConfiguration>{
     @Override
     public void run(RestConfiguration configuration,
                     Environment environment) {
+        environment.jersey().register(new VersionResource());
     }
     
 }
