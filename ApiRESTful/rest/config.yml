@@ -1,0 +1,7 @@
+baseUrl: http://localhost
+swagger:
+    resourcePackage: com.corpfolder.rest.resources
+server:
+  applicationConnectors:
+    - type: http
+      port: 8080
