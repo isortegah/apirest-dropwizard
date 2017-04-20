@@ -29,3 +29,46 @@
     </dependency>
 </dependencies>
 ```
+
+## Creando la clase de Configuración
+
+* Crear clase `RestConfiguration.java` base:
+
+```java
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.dropwizard.Configuration;
+import org.hibernate.validator.constraints.NotEmpty;
+import io.federecio.dropwizard.swagger.SwaggerBundleConfiguration;
+
+/**
+ *
+ * @author ISORTEGAH
+ */
+public class RestConfiguration extends Configuration{
+    @NotEmpty
+    @JsonProperty
+    private String baseUrl;
+
+    public String getBaseUrl() {
+        return baseUrl;
+    }
+
+    public void setBaseUrl(String baseUrl) {
+        this.baseUrl = baseUrl;
+    }
+    
+    @JsonProperty("swagger")
+    public SwaggerBundleConfiguration swaggerBundleConfiguration;
+}
+```
+* Adicionar al `pom.xml` del modulo `rest` la siguiente dependencia:
+
+```xml
+<dependency>
+    <groupId>com.smoketurner</groupId>
+    <artifactId>dropwizard-swagger</artifactId>
+    <version>1.0.0-rc2-1</version>
+</dependency>
+```
+Referencia a [ejemplo](https://github.com/dropwizard/dropwizard/blob/master/dropwizard-example/src/main/java/com/example/helloworld/HelloWorldConfiguration.java) básico
+
