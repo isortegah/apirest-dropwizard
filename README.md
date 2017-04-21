@@ -287,3 +287,38 @@ public class VersionDTO {
 > Main Class: com.isortegah.rest.ApiRestService  
 > Arguments: server config.yml  
 ![Alt Text](imgs/netbeans5.png)
+
+
+## Proceso de dockerizacion
+
+1. Crear `Dockerfile`
+```bash
+FROM isortegah/java8:v1
+
+
+EXPOSE 8080
+
+RUN mkdir -p /app
+WORKDIR /app
+
+ADD bootstrap.sh bootstrap.sh
+ADD rest/target/rest-0.1-SNAPSHOT.jar rest.jar
+ADD config.yml config.yml
+
+ENTRYPOINT ["/bin/bash", "./bootstrap.sh"]
+```
+2. Crear archivo `bootstrap.sh`
+```bash
+#!/usr/bin/env bash
+java -jar rest.jar server config.yml
+```
+3. Construcción de imagen
+```
+docker build -t qa-rest .
+```
+
+4. Ejecución de imagen
+
+```
+docker run -it -p 8080:8080 < imagen id >
+```
