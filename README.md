@@ -1,15 +1,15 @@
 # APIREST-FULL
 
 ## Índice
-* [Creación de proyecto en NetBeans](#Creación-de-proyecto-en-NetBeans)
-* [Ajustes en el POM](#Ajustes-en-el-POM)
-* [Creando la clase de Configuración](#Creando-la-clase-de-Configuración)
-* [Crear la clase de la aplicación](#Crear-la-clase-de-la-aplicación)
-* [Crear clase ejemplo](#Crear-clase-ejemplo)
-* [Configuración ejecución en NetBeans](#Configuración-ejecución-en-NetBeans)
-* [Proceso de dockerizacion](#Proceso-de-dockerizacion)
+* [Creación de proyecto en NetBeans](#creación-de-proyecto-en-netbeans)
+* [Ajustes en el POM](#ajustes-en-el-pom)
+* [Creando la clase de Configuración](#creando-la-clase-de-configuracion)
+* [Crear la clase de la aplicación](#crear-la-clase-de-la-aplicación)
+* [Crear clase ejemplo](#crear-clase-ejemplo)
+* [Configuración ejecución en NetBeans](#configuración-ejecución-en-netBeans)
+* [Proceso de dockerizacion](#croceso-de-dockerizacion)
 
-## Creación de proyecto en NetBeans
+## Creacion de proyecto en NetBeans
 
 * El proyecto parent fue creado en NetBeans con la opción: `Maven -> POM Project`  
 
@@ -39,7 +39,7 @@
 </dependencies>
 ```
 
-## Creando la clase de Configuración
+## Creando la clase de Configuracion
 
 * Crear clase `RestConfiguration.java` base:
 
@@ -94,7 +94,7 @@ server:
       port: 8080
 ```
 
-## Crear la clase de la aplicación
+## Crear la clase de la aplicacion
 ```java
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
@@ -286,7 +286,7 @@ public class VersionDTO {
     }
 ```
 
-## Configuración ejecución en NetBeans
+## Configuracion ejecucion en NetBeans
 
 * Adicionar `Configutarion` sobre modulo `rest`  
 ![Alt Text](imgs/netbeans3.png)
