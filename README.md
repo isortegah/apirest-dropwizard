@@ -1,4 +1,13 @@
+# APIREST-FULL
 
+## Índice
+* [Creación de proyecto en NetBeans](#Creación-de-proyecto-en-NetBeans)
+* [Ajustes en el POM](#Ajustes-en-el-POM)
+* [Creando la clase de Configuración](#Creando-la-clase-de-Configuración)
+* [Crear la clase de la aplicación](#Crear-la-clase-de-la-aplicación)
+* [Crear clase ejemplo](#Crear-clase-ejemplo)
+* [Configuración ejecución en NetBeans](#Configuración-ejecución-en-NetBeans)
+* [Proceso de dockerizacion](#Proceso-de-dockerizacion)
 
 ## Creación de proyecto en NetBeans
 
@@ -85,7 +94,7 @@ server:
       port: 8080
 ```
 
-* Crear la clase de la aplicación:
+## Crear la clase de la aplicación
 ```java
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
@@ -174,7 +183,9 @@ public class ApiRestService extends Application<RestConfiguration>{
     </build>
 ```
 
-* Crear clase ejemplo `VersionResource.java`
+## Crear clase ejemplo 
+
+`VersionResource.java`
 
 ```java
 import com.codahale.metrics.annotation.Timed;
