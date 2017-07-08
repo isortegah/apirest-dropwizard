@@ -1,13 +1,13 @@
 # APIREST-FULL
 
 ## Índice
-* [Creación de proyecto en NetBeans](#creación-de-proyecto-en-netbeans)
+* [Creación de proyecto en NetBeans](#creacion-de-proyecto-en-netbeans)
 * [Ajustes en el POM](#ajustes-en-el-pom)
 * [Creando la clase de Configuración](#creando-la-clase-de-configuracion)
-* [Crear la clase de la aplicación](#crear-la-clase-de-la-aplicación)
+* [Crear la clase de la aplicación](#crear-la-clase-de-la-aplicacion)
 * [Crear clase ejemplo](#crear-clase-ejemplo)
-* [Configuración ejecución en NetBeans](#configuración-ejecución-en-netBeans)
-* [Proceso de dockerizacion](#croceso-de-dockerizacion)
+* [Configuración ejecución en NetBeans](#configuracion-ejecucion-en-netBeans)
+* [Proceso de dockerizacion](#proceso-de-dockerizacion)
 
 ## Creacion de proyecto en NetBeans
 
