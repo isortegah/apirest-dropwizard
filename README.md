@@ -1,13 +1,18 @@
 # APIREST-FULL
 
-## Índice
+## Indice
+### Iniciando Proyecto Base
 * [Creación de proyecto en NetBeans](#creacion-de-proyecto-en-netbeans)
 * [Ajustes en el POM](#ajustes-en-el-pom)
 * [Creando la clase de Configuración](#creando-la-clase-de-configuracion)
 * [Crear la clase de la aplicación](#crear-la-clase-de-la-aplicacion)
 * [Crear clase ejemplo](#crear-clase-ejemplo)
-* [Configuración ejecución en NetBeans](#configuracion-ejecucion-en-netBeans)
+* [Configuración ejecución en NetBeans](#configuracion-ejecucion-en-netbeans)
 * [Proceso de dockerizacion](#proceso-de-dockerizacion)
+
+### Adicionales
+
+### [Temas a considerar](#temas-a-considerar)
 
 ## Creacion de proyecto en NetBeans
 
@@ -19,6 +24,7 @@
 
 ![alt text](imgs/netbeans2.png "Creación de modulo")
 
+[Arriba](#indice)
 
 ## Ajustes en el POM
 
@@ -38,6 +44,7 @@
     </dependency>
 </dependencies>
 ```
+[Arriba](#indice)
 
 ## Creando la clase de Configuracion
 
@@ -93,8 +100,9 @@ server:
     - type: http
       port: 8080
 ```
-
+[Arriba](#indice)
 ## Crear la clase de la aplicacion
+> * Dentro del siguiente código se puede ver la integración de swagger como opción de exposición gráfica de los servicios.
 ```java
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
@@ -182,7 +190,7 @@ public class ApiRestService extends Application<RestConfiguration>{
         </plugins>
     </build>
 ```
-
+[Arriba](#indice)
 ## Crear clase ejemplo 
 
 `VersionResource.java`
@@ -285,7 +293,7 @@ public class VersionDTO {
         environment.jersey().register(new VersionResource());
     }
 ```
-
+[Arriba](#indice)
 ## Configuracion ejecucion en NetBeans
 
 * Adicionar `Configutarion` sobre modulo `rest`  
@@ -299,7 +307,7 @@ public class VersionDTO {
 > Arguments: server config.yml  
 ![Alt Text](imgs/netbeans5.png)
 
-
+[Arriba](#indice)
 ## Proceso de dockerizacion
 
 1. Crear `Dockerfile`
@@ -333,3 +341,13 @@ docker build -t qa-rest .
 ```
 docker run -it -p 8080:8080 < imagen id >
 ```
+## Adicionales
+
+## Log4j2
+
+[Referencia 1](http://www.journaldev.com/7128/log4j2-example-tutorial-configuration-levels-appenders)  
+[Referencia 2](https://examples.javacodegeeks.com/enterprise-java/log4j/log4j-2-rollingfileappender-example/)
+[Referencia 3](http://memorynotfound.com/log4j2-with-log4j2-xml-configuration-example/)
+## Temas a considerar
+
+* [AssetsBundle](http://www.dropwizard.io/0.7.0/dropwizard-assets/apidocs/io/dropwizard/assets/AssetsBundle.html)
