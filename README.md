@@ -1,4 +1,4 @@
-# APIREST-FULL
+ç# APIREST-FULL
 
 ## Indice
 ### Iniciando Proyecto Base
@@ -10,7 +10,8 @@
 * [Configuración ejecución en NetBeans](#configuracion-ejecucion-en-netbeans)
 * [Proceso de dockerizacion](#proceso-de-dockerizacion)
 
-### Adicionales
+### [Adicionales](#adicionales)
+* [Log4j2](#log4j2)
 
 ### [Temas a considerar](#temas-a-considerar)
 
@@ -345,9 +346,39 @@ docker run -it -p 8080:8080 < imagen id >
 
 ## Log4j2
 
-[Referencia 1](http://www.journaldev.com/7128/log4j2-example-tutorial-configuration-levels-appenders)  
-[Referencia 2](https://examples.javacodegeeks.com/enterprise-java/log4j/log4j-2-rollingfileappender-example/)
-[Referencia 3](http://memorynotfound.com/log4j2-with-log4j2-xml-configuration-example/)
+* Agregar al POM del proyecto la siguiente dependencia:
+```xml
+<dependency> 
+    <groupId>org.apache.logging.log4j</groupId> 
+    <artifactId>log4j-core</artifactId>
+    <version>2.8.2</version> 
+</dependency>
+```
+* Agregar el archivo de configuración en la carpeta `resource` del proyecto, con el nombre `log4j.<properties|xml|yaml|json>`.  
+
+[Ejemplos](ApiRESTfull/rest/src/main/resources)
+
+![alt text](imgs/proyecto2.png)   
+
+* Código Java  
+```java
+import org.apache.logging.log4j.LogManager; 
+import org.apache.logging.log4j.Logger; 
+
+//Ejemplo de declaración de variable 
+private static final Logger log = LogManager.getLogger("VersionResource");  
+
+//Ejemplo de implementación
+log.info("Se requiere servicio version"); 
+```
+[Log4j Users Guide](http://logging.apache.org/log4j/2.0/log4j-users-guide.pdf)  
+[Referencia 1](https://logging.apache.org/log4j/2.x/manual/configuration.html#Properties)  
+[Referencia 2](http://www.journaldev.com/7128/log4j2-example-tutorial-configuration-levels-appenders)  
+[Referencia 3](https://examples.javacodegeeks.com/enterprise-java/log4j/log4j-2-rollingfileappender-example/)  
+[Referencia 4](http://memorynotfound.com/log4j2-with-log4j2-xml-configuration-example/)  
+[Referencia 5](https://github.com/apache/logging-log4j2/tree/master/log4j-core/src/test/resources)  
+[Referencia 6](http://mycuteblog.com/log4j2-xml-configuration-example/)
+
 ## Temas a considerar
 
 * [AssetsBundle](http://www.dropwizard.io/0.7.0/dropwizard-assets/apidocs/io/dropwizard/assets/AssetsBundle.html)
