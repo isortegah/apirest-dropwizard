@@ -394,6 +394,8 @@ heroku create < nombre app >
 ```
 heroku buildpacks:set heroku/java
 ```
+
+Despliege en Heroku 
 * Crear archivo `Procfile``
 ```bash
 web: java -Ddw.server.applicationConnectors[0].port=$PORT -jar rest/target/rest-0.1-SNAPSHOT.jar server config.yml
@@ -404,6 +406,18 @@ git push heroku master
 ```
 
 Esta aplicación la podemos ver funcionando en [api-rest-io](https://api-rest-io.herokuapp.com/swagger)
+
+Especificar versión de Java
+
+* Crear archivo `system.properties`
+```
+"java.runtime.version=1.8" 
+```
+* Verificar la versión de java en Heroku
+```
+heroku run java -version
+```
+[Referencia 1](https://devcenter.heroku.com/articles/java-support#specifying-a-java-version)
 
 ## Aws
 
