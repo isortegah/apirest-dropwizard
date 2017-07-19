@@ -394,10 +394,16 @@ heroku create < nombre app >
 ```
 heroku buildpacks:set heroku/java
 ```
+* Crear archivo `Procfile``
+```bash
+web: java -Ddw.server.applicationConnectors[0].port=$PORT -jar rest/target/rest-0.1-SNAPSHOT.jar server config.yml
+```
 * Desplegar app
 ```
 git push heroku master
 ```
+
+Esta aplicación la podemos ver funcionando en [api-rest-io](https://api-rest-io.herokuapp.com/swagger)
 
 ## Aws
 
@@ -407,3 +413,7 @@ http://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/setup-credentials.htm
 ## Temas a considerar
 
 * [AssetsBundle](http://www.dropwizard.io/0.7.0/dropwizard-assets/apidocs/io/dropwizard/assets/AssetsBundle.html)
+
+
+
+Picked up JAVA_TOOL_OPTIONS: -Xmx350m -Xss512k -Dfile.encoding=UTF-8
