@@ -1,4 +1,4 @@
-ç# APIREST-FULL
+# APIREST-FULL
 
 ## Indice
 ### Iniciando Proyecto Base
@@ -12,6 +12,7 @@
 
 ### [Adicionales](#adicionales)
 * [Log4j2](#log4j2)
+* [Heroku](#heroku)
 
 ### [Temas a considerar](#temas-a-considerar)
 
@@ -378,6 +379,24 @@ log.info("Se requiere servicio version");
 [Referencia 4](http://memorynotfound.com/log4j2-with-log4j2-xml-configuration-example/)  
 [Referencia 5](https://github.com/apache/logging-log4j2/tree/master/log4j-core/src/test/resources)  
 [Referencia 6](http://mycuteblog.com/log4j2-xml-configuration-example/)
+
+## Dockerizacion
+## Heroku
+Pre requisitos
+* Instalación de [Heroku Cli](https://devcenter.heroku.com/articles/heroku-cli)
+
+* Crear app en Heroku
+
+```
+heroku create < nombre app >
+```
+
+
+
+## Aws
+
+https://javatutorial.net/java-s3-example
+http://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/setup-credentials.html
 
 ## Temas a considerar
 
