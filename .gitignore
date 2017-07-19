@@ -2,3 +2,11 @@
 /ApiRESTful/dtos/target/
 /ApiRESTful/target/
 \.DS_Store
+
+rest/logs/
+
+rest/propertieslog\.log
+
+rest/target/
+
+dtos/target/
