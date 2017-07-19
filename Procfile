@@ -1,1 +1,1 @@
-web: java -Ddw.server.applicationConnectors[0].port=$PORT -jar rest/target/rest-0.0.1-SNAPSHOT.jar server config.yml
+web: java -Ddw.server.applicationConnectors[0].port=$PORT -jar rest/target/rest-0.1-SNAPSHOT.jar server config.yml
