@@ -390,8 +390,14 @@ Pre requisitos
 ```
 heroku create < nombre app >
 ```
-
-
+* Establecer buildpack
+```
+heroku buildpacks:set heroku/java
+```
+* Desplegar app
+```
+git push heroku master
+```
 
 ## Aws
 
