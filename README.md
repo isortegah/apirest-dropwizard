@@ -13,6 +13,7 @@
 ### [Adicionales](#adicionales)
 * [Log4j2](#log4j2)
 * [Heroku](#heroku)
+* [Jwt](#jwt)
 
 ### [Temas a considerar](#temas-a-considerar)
 
@@ -335,13 +336,22 @@ java -jar rest.jar server config.yml
 ```
 3. Construcción de imagen
 ```
-docker build -t qa-rest .
+docker build -t api-rest .
 ```
 
 4. Ejecución de imagen
 
 ```
 docker run -it -p 8080:8080 < imagen id >
+```
+5. Ejecutar bash
+```
+docker exec -it < id container > /bin/bash
+```
+
+6. Borrar contenedores finalizados
+```
+docker ps -a | egrep Exited | cut -d ' ' -f 1|xargs docker rm
 ```
 ## Adicionales
 
@@ -380,7 +390,6 @@ log.info("Se requiere servicio version");
 [Referencia 5](https://github.com/apache/logging-log4j2/tree/master/log4j-core/src/test/resources)  
 [Referencia 6](http://mycuteblog.com/log4j2-xml-configuration-example/)
 
-## Dockerizacion
 ## Heroku
 Pre requisitos
 * Instalación de [Heroku Cli](https://devcenter.heroku.com/articles/heroku-cli)
@@ -419,7 +428,16 @@ heroku run java -version
 ```
 [Referencia 1](https://devcenter.heroku.com/articles/java-support#specifying-a-java-version)
 
+## [JWT](#jwt)
+
+
+
 ## Aws
+
+### Referencia
+**Credenciales**
+> [aws doc](http://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/credentials.html#credentials-file-format)  
+> [Working with AWS Credentials](http://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/credentials.html)
 
 https://javatutorial.net/java-s3-example
 http://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/setup-credentials.html
