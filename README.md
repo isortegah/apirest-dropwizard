@@ -434,6 +434,14 @@ heroku run java -version
 
 ## Aws
 
+* Crear modulo `aws`
+
+> ![alt text](imgs/netbeans6.png "Creación de modulo")
+
+> ![alt text](imgs/netbeans7.png "Seleccionar JavaApplication")
+
+
+
 ### Referencia
 **Credenciales**
 > [aws doc](http://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/credentials.html#credentials-file-format)  
