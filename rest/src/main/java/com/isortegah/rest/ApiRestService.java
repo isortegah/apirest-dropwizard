@@ -1,6 +1,7 @@
 package com.isortegah.rest;
 
 import com.isortegah.aws.AwsS3;
+import com.isortegah.dtos.configAws.ConfigAws;
 import com.isortegah.rest.resources.VersionResource;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
@@ -30,12 +31,12 @@ public class ApiRestService extends Application<RestConfiguration>{
     @Override
     public void run(RestConfiguration configuration,
                     Environment environment) {
-        configFromAws();
+        configFromAws( configuration.getAws() );
         environment.jersey().register(new VersionResource());
     }
     
-    public void configFromAws(){
-        AwsS3 awsS3 = new AwsS3("File");
+    public void configFromAws( ConfigAws aws ){
+        AwsS3 awsS3 = new AwsS3( aws.getCredentialProvider() );
     }
     
 }
