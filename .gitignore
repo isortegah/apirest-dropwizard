@@ -17,3 +17,7 @@ rest/target/maven-archiver/
 rest/target/classes/
 
 credentials
+
+propertieslog\.log
+
+logs/propertieslogs\.log

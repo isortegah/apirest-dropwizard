@@ -6,4 +6,4 @@ server:
     - type: http
       port: 8080
 aws: 
-  credentialProvider: File
+  credentialProvider: Environment

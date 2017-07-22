@@ -441,7 +441,9 @@ heroku run bash
 **Referencia:**   
 
 [Container Registry and Runtime](https://devcenter.heroku.com/articles/container-registry-and-runtime)
+
 [Push multiple Docker images to Heroku Container Registry](https://devcenter.heroku.com/changelog-items/1191)
+
 [Container Registry and Runtime | Heroku Dev Center](https://devcenter.heroku.com/articles/container-registry-and-runtime)
 
 
@@ -495,8 +497,31 @@ Para la implementación de las credienciales verificar en el resultado del sigui
 > `aws/src/main/java/com/isortegah/aws/AwsS3.java`
 > `dtos/src/main/java/com/isortegah/dtos/configAws/ConfigAws.java`
 
+Para el caso de las credenciales vía variables de ambiente el proceso es el siguiente:
 
-
+* Exportar las variables:
+```bash
+export AWS_ACCESS_KEY_ID="xyz"
+export AWS_SECRET_ACCESS_KEY="aaa"
+```
+En MacOs y Linux agregarlas en el archivo .bashrc o .bash_profile y recargarlo.
+```bash
+source .bash_profile
+```
+Para Windows usar el comando:
+```bash
+set AWS_ACCESS_KEY_ID="xyz"
+set AWS_SECRET_ACCESS_KEY="aaa"
+```
+Lo anterior para poder ejecutar el comando:
+```bash
+java -jar rest/target/rest-0.1-SNAPSHOT.jar server config.yml
+```
+* En el archivo `config.yml`cambiar el valor `File` por `Environment`.
+```yaml
+aws: 
+  credentialProvider: Environment
+``` 
 ### Referencia
 
 **Instalacion**

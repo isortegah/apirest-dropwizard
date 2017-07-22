@@ -1,9 +1,11 @@
 package com.isortegah.aws;
 
 import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.EnvironmentVariableCredentialsProvider;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.amazonaws.auth.profile.ProfileCredentialsProvider;
+
 /**
  *
  * @author isortegah
@@ -26,17 +28,27 @@ public class AwsCredentials {
     
     public AWSCredentials getCredentials(){
         AWSCredentials credentials = null ;
+        log.info(credentialProvider);
         switch( credentialProvider ){
-            case "File":
+            case "File" :
                 credentials = credentialForFile();
             break;
+            case "Environment" :
+                credentials = credentialForEnvironment();
+                break;
             default:
+                credentials = credentialForFile();
             break;
         }
+        log.info(credentials.getAWSAccessKeyId());
         return credentials;
     }
 
     private AWSCredentials credentialForFile() {
         return new ProfileCredentialsProvider().getCredentials();
+    }
+
+    private AWSCredentials credentialForEnvironment() {
+        return new EnvironmentVariableCredentialsProvider().getCredentials();
     }
 }
