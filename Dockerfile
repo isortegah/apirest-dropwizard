@@ -13,4 +13,4 @@ ADD bootstrap.sh bootstrap.sh
 ADD rest/target/rest-0.1-SNAPSHOT.jar rest.jar
 ADD config.yml config.yml
 
-ENTRYPOINT ["/bin/bash", "./bootstrap.sh"]
+CMD ["/bin/bash", "./bootstrap.sh"]
