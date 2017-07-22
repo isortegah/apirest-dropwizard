@@ -1,8 +1,9 @@
 package com.isortegah.aws;
 
+import com.amazonaws.auth.AWSCredentials;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
+import com.amazonaws.auth.profile.ProfileCredentialsProvider;
 /**
  *
  * @author isortegah
@@ -23,7 +24,19 @@ public class AwsCredentials {
         this.credentialProvider = credentialProvider;
     }
     
-    public void getCredentials(){
-        log.info(credentialProvider);
+    public AWSCredentials getCredentials(){
+        AWSCredentials credentials = null ;
+        switch( credentialProvider ){
+            case "File":
+                credentials = credentialForFile();
+            break;
+            default:
+            break;
+        }
+        return credentials;
+    }
+
+    private AWSCredentials credentialForFile() {
+        return new ProfileCredentialsProvider().getCredentials();
     }
 }

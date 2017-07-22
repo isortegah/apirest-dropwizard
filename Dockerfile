@@ -3,6 +3,9 @@ FROM isortegah/java8:v1
 
 EXPOSE 8080
 
+RUN mkdir -p /root/.aws
+ADD credentials /root/.aws/credentials
+
 RUN mkdir -p /app
 WORKDIR /app
 

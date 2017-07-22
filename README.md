@@ -353,6 +353,10 @@ docker exec -it < id container > /bin/bash
 ```
 docker ps -a | egrep Exited | cut -d ' ' -f 1|xargs docker rm
 ```
+7. Borrar imagenes < none >
+```
+docker images | egrep none | cut -c 41-53| xargs docker rmi
+```
 ## Adicionales
 
 ## Log4j2
@@ -443,9 +447,15 @@ heroku run java -version
 
 
 ### Referencia
+
+**Instalacion**
+> [Instalación de la AWS CLI con el instalador agregado (Linux, macOS, or Unix)](http://docs.aws.amazon.com/es_es/cli/latest/userguide/awscli-install-bundle.html#install-bundle-user)
 **Credenciales**
+> [set](http://docs.aws.amazon.com/cli/latest/reference/configure/set.html)
+> [Environment Variables](http://docs.aws.amazon.com/cli/latest/userguide/cli-environment.html)
 > [aws doc](http://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/credentials.html#credentials-file-format)  
 > [Working with AWS Credentials](http://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/credentials.html)
+> [Loading Credentials in Node.js from the Shared Credentials File](http://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/loading-node-credentials-shared.html)
 
 https://javatutorial.net/java-s3-example
 http://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/setup-credentials.html

@@ -15,3 +15,5 @@ aws/target/
 rest/target/maven-archiver/
 
 rest/target/classes/
+
+credentials
