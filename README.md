@@ -434,12 +434,15 @@ heroku container:login
 ```
 heroku container:push web
 ```
-
 * Correr bash en heroku
 ```
 heroku run bash
 ```
-**Referencia:** [Container Registry and Runtime](https://devcenter.heroku.com/articles/container-registry-and-runtime)
+**Referencia:**   
+
+[Container Registry and Runtime](https://devcenter.heroku.com/articles/container-registry-and-runtime)
+[Push multiple Docker images to Heroku Container Registry](https://devcenter.heroku.com/changelog-items/1191)
+[Container Registry and Runtime | Heroku Dev Center](https://devcenter.heroku.com/articles/container-registry-and-runtime)
 
 
 Especificar versión de Java
@@ -483,7 +486,14 @@ aws:
 
 Se implementan dos formas para la obtencion de las credenciales de `aws`, por el archivo `credentials`y por variables de ambiente.
 
-Verificar en el resultado del siguiente [Compare en gitHub](https://github.com/isortegah/apirest-full/compare/4d3a91486f242db456f063ba5c7bbaa80419d209...43a54ced9d0e24800386d134da5b52eabd593327?diff=split&name=43a54ced9d0e24800386d134da5b52eabd593327) los cambios a los siguientes arcchivos:
+Para la implementación de las credienciales verificar en el resultado del siguiente [Compare en gitHub](https://github.com/isortegah/apirest-full/compare/4d3a91486f242db456f063ba5c7bbaa80419d209...fa5addc0fb57a98174f44edbeae5235af2657274) los cambios a los siguientes archivos:
+
+> `rest/src/main/java/com/isortegah/rest/ApiRestService.java`
+> `rest/src/main/java/com/isortegah/rest/RestConfiguration.java`
+> `aws/pom.xm`
+> `aws/src/main/java/com/isortegah/aws/AwsCredentials.java`
+> `aws/src/main/java/com/isortegah/aws/AwsS3.java`
+> `dtos/src/main/java/com/isortegah/dtos/configAws/ConfigAws.java`
 
 
 
