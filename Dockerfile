@@ -3,8 +3,13 @@ FROM isortegah/java8:v1
 
 EXPOSE 8080
 
-RUN mkdir -p /root/.aws
-ADD credentials /root/.aws/credentials
+#Docker
+#RUN mkdir -p /root/.aws
+#ADD credentials /root/.aws/credentials
+
+#Heroku
+RUN mkdir -p /app/.aws
+ADD credentials /app/.aws/credentials
 
 RUN mkdir -p /app
 WORKDIR /app

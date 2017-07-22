@@ -418,7 +418,29 @@ web: java -Ddw.server.applicationConnectors[0].port=$PORT -jar rest/target/rest-
 git push heroku master
 ```
 
-Esta aplicación la podemos ver funcionando en [api-rest-io](https://api-rest-io.herokuapp.com/swagger)
+Esta aplicación la podemos ver funcionando en [api-rest-io](https://api-rest-io.herokuapp.com/swagger) **Nota:** Se encuentra desplegada como contenedor Docker.
+
+**Despliegue en heroku como docker**
+
+* Instalar plugin
+```
+heroku plugins:install heroku-container-registry
+```
+* Login en contenedor
+```
+heroku container:login
+```
+* Push codigo
+```
+heroku container:push web
+```
+
+* Correr bash en heroku
+```
+heroku run bash
+```
+**Referencia:** [Container Registry and Runtime](https://devcenter.heroku.com/articles/container-registry-and-runtime)
+
 
 Especificar versión de Java
 
@@ -443,6 +465,25 @@ heroku run java -version
 > ![alt text](imgs/netbeans6.png "Creación de modulo")
 
 > ![alt text](imgs/netbeans7.png "Seleccionar JavaApplication")
+* Adicionar dependencia a `pom.xml` 
+```xml
+<dependencies>       
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk-s3</artifactId>
+            <version>1.11.163</version>
+        </dependency> 
+    </dependencies>
+```
+* Adicionar al archivo `config.yml` la configuración para `aws`
+```yaml
+aws: 
+  credentialProvider: < File|Environment >
+```
+
+Se implementan dos formas para la obtencion de las credenciales de `aws`, por el archivo `credentials`y por variables de ambiente.
+
+Verificar en el resultado del siguiente [Compare en gitHub](https://github.com/isortegah/apirest-full/compare/4d3a91486f242db456f063ba5c7bbaa80419d209...43a54ced9d0e24800386d134da5b52eabd593327?diff=split&name=43a54ced9d0e24800386d134da5b52eabd593327) los cambios a los siguientes arcchivos:
 
 
 
@@ -450,6 +491,7 @@ heroku run java -version
 
 **Instalacion**
 > [Instalación de la AWS CLI con el instalador agregado (Linux, macOS, or Unix)](http://docs.aws.amazon.com/es_es/cli/latest/userguide/awscli-install-bundle.html#install-bundle-user)
+
 **Credenciales**
 > [set](http://docs.aws.amazon.com/cli/latest/reference/configure/set.html)
 > [Environment Variables](http://docs.aws.amazon.com/cli/latest/userguide/cli-environment.html)
