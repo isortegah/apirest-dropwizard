@@ -418,7 +418,7 @@ web: java -Ddw.server.applicationConnectors[0].port=$PORT -jar rest/target/rest-
 git push heroku master
 ```
 
-Esta aplicación la podemos ver funcionando en [api-rest-io](https://api-rest-io.herokuapp.com/swagger) **Nota:** Se encuentra desplegada como contenedor Docker.
+Esta aplicación la podemos ver funcionando en [api.isortegah.com/swagger](http://api.isortegah.com/swagger) **Nota:** Se encuentra desplegada como contenedor Docker.
 
 **Despliegue en heroku como docker**
 
@@ -522,7 +522,51 @@ java -jar rest/target/rest-0.1-SNAPSHOT.jar server config.yml
 aws: 
   credentialProvider: Environment
 ``` 
-### Referencia
+
+Para la implementación de las credenciales vía variables de ambiente ver la siguiente [Comparación en github](https://github.com/isortegah/apirest-full/compare/8fc54b34f077b1752faa978dee0b07db91f0834d...cbd8c5ebd75e82e147f950b187a13b05be380727), los archivos a revisar son:
+
+> `aws/src/main/java/com/isortegah/aws/AwsCredentials.java`
+
+**Ejecución**
+
+Se presentan las siguientes opciones de ejecución de la imagen docker.
+
+* De forma directa:
+
+```bash
+docker run -it -p 8080 -e AWS_ACCESS_KEY_ID=xyzqwd -e AWS_SECRET_ACCESS_KEY=aaa fba5ce1e06db
+```
+* Vía docker-compose:  
+    * Crear archivo `docker-compose.yml`
+```yml
+version: '3'
+services:
+  web:
+    image: api-rest
+    env_file: 
+      - ./.env
+    environment: 
+      - AMBIENTE="DEV"
+    ports: 
+      - "8080:8080"
+```
+
+* 
+    * Crear archivo `.env` donde registraremos las variables de ambiente
+
+```bash
+AWS_ACCESS_KEY_ID=xyz
+AWS_SECRET_ACCESS_KEY=aaa
+```
+
+**Nota:** Lo recomendable por practico y seguro, cuando ejecutemos en local, es usar el docker-compose, en el caso que estemos desarrollando podemos utilizar el archivo de credenciales.
+
+* Despliege a heroku:
+
+Agregar las variables de ambiente en `settings` dentro de la app en `heroku`.
+![alt text](imgs/heroku1.png)
+
+### **Referencia**
 
 **Instalacion**
 > [Instalación de la AWS CLI con el instalador agregado (Linux, macOS, or Unix)](http://docs.aws.amazon.com/es_es/cli/latest/userguide/awscli-install-bundle.html#install-bundle-user)
@@ -536,6 +580,10 @@ aws:
 
 https://javatutorial.net/java-s3-example
 http://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/setup-credentials.html
+
+**Docker**  
+
+[Environment variables in Compose](https://docs.docker.com/compose/environment-variables/#the-env-file)
 
 ## Temas a considerar
 

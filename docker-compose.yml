@@ -1,0 +1,10 @@
+version: '3'
+services:
+  web:
+    image: api-rest
+    env_file: 
+      - ./.env
+    environment: 
+      - AMBIENTE="DEV"
+    ports: 
+      - "8080:8080"
