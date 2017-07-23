@@ -22,6 +22,7 @@ public class ApiRestService extends Application<RestConfiguration>{
     @Override
     public void initialize(Bootstrap<RestConfiguration> bootstrap) {
         bootstrap.addBundle(new SwaggerBundle<RestConfiguration>() {
+            @Override
             protected SwaggerBundleConfiguration getSwaggerBundleConfiguration(RestConfiguration configuration) {
                 return configuration.swaggerBundleConfiguration;
             }           
@@ -37,6 +38,7 @@ public class ApiRestService extends Application<RestConfiguration>{
     
     public void configFromAws( ConfigAws aws ){
         AwsS3 awsS3 = new AwsS3( aws.getCredentialProvider() );
+        awsS3.getObjectBIS("configuraciones" , "apirestfullconfig.yml");
     }
     
 }

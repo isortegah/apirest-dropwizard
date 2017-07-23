@@ -28,7 +28,6 @@ public class AwsCredentials {
     
     public AWSCredentials getCredentials(){
         AWSCredentials credentials = null ;
-        log.info(credentialProvider);
         switch( credentialProvider ){
             case "File" :
                 credentials = credentialForFile();
@@ -40,7 +39,6 @@ public class AwsCredentials {
                 credentials = credentialForFile();
             break;
         }
-        log.info(credentials.getAWSAccessKeyId());
         return credentials;
     }
 
