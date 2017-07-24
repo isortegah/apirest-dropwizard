@@ -460,8 +460,25 @@ heroku run java -version
 [Referencia 1](https://devcenter.heroku.com/articles/java-support#specifying-a-java-version)
 
 ## [JWT](#jwt)
+* Crear modulo `authentication`
+> ![alt text](imgs/netbeans6.png "Creación de modulo")
 
+> ![alt text](imgs/netbeans7.png "Seleccionar JavaApplication")
 
+* Agregar dependencia al `pom.xml``
+```xml
+<dependencies>
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+            <version>3.2.0</version>
+        </dependency>
+    </dependencies>
+```
+
+**Referencia**
+> [java-jwt](https://github.com/auth0/java-jwt)
+> [JSON Web Token (JWT)](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html#rfc.section.3)
 
 ## Aws
 
@@ -534,7 +551,7 @@ Se presentan las siguientes opciones de ejecución de la imagen docker.
 * De forma directa:
 
 ```bash
-docker run -it -p 8080 -e AWS_ACCESS_KEY_ID=xyzqwd -e AWS_SECRET_ACCESS_KEY=aaa fba5ce1e06db
+docker run -it -p 8080:8080 -e PORT=8080 -e AWS_ACCESS_KEY_ID=xyzqwd -e AWS_SECRET_ACCESS_KEY=aaa fba5ce1e06db
 ```
 * Vía docker-compose:  
     * Crear archivo `docker-compose.yml`
