@@ -22,7 +22,7 @@ public class VersionResource {
     private static final Logger log = LogManager.getLogger("VersionResource");
     @GET
     @Timed
-    @ApiOperation(value = "Obtiene la información de la versión", position = 0)
+    @ApiOperation(value = "Obtiene la información de la versión", notes="", position = 0)
     public VersionDTO version() {
     
        return new VersionDTO();

@@ -25,8 +25,7 @@ public class TokenResource {
     }
     
     @POST
-    @Path("/")
-    @ApiOperation( value = "Solicita token de autenticación" ,  position = 0)
+    @ApiOperation( value = "Solicita token de autenticación" ,notes="",  position = 0)
     public Response solicitaToken(){
         return Response.status(Response.Status.CREATED).build();
     }
