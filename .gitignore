@@ -21,3 +21,5 @@ credentials
 propertieslog\.log
 
 logs/propertieslogs\.log
+
+rest/target/rest-0\.1-SNAPSHOT\.jar

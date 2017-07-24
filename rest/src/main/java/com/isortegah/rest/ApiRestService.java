@@ -6,6 +6,7 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.isortegah.aws.AwsS3;
 import com.isortegah.dtos.config.ConfigServices;
 import com.isortegah.dtos.configAws.ConfigAws;
+import com.isortegah.rest.resources.TokenResource;
 import com.isortegah.rest.resources.VersionResource;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
@@ -44,6 +45,7 @@ public class ApiRestService extends Application<RestConfiguration>{
                     Environment environment) {
         configFromAws( configuration.getAws() );
         environment.jersey().register(new VersionResource());
+        environment.jersey().register(new TokenResource());
     }
     
     public void configFromAws( ConfigAws aws ){

@@ -24,10 +24,7 @@ public class VersionResource {
     @Timed
     @ApiOperation(value = "Obtiene la información de la versión", position = 0)
     public VersionDTO version() {
-       log.info("Se requiere servicio version");
-       log.error("Hoka");
-       log.debug("debug");
-       log.warn("warn");
+    
        return new VersionDTO();
        
     }
