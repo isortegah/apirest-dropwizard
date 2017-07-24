@@ -137,6 +137,38 @@ public class ApiRestService extends Application<RestConfiguration>{
                     Environment environment) {
     }
 ```
+* Adicionar `healthCheck`  
+
+Archivo `DummyHealthCheck.java`
+```java
+public class DummyHealthCheck extends HealthCheck {
+    @Override
+    protected Result check() throws Exception {
+        return Result.healthy();
+    }
+
+}
+```
+Adicionar al archivo `ApiRestService.java`
+```java
+@Override
+    public void run(RestConfiguration configuration,
+                    Environment environment) {
+        configFromAws( configuration.getAws() );
+        environment.healthChecks().register("dummy", new DummyHealthCheck());
+    }
+```
+Esto evitara que se muestre el mensaje:
+```bash
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!    THIS APPLICATION HAS NO HEALTHCHECKS. THIS MEANS YOU WILL NEVER KNOW      !
+!     IF IT DIES IN PRODUCTION, WHICH MEANS YOU WILL NEVER KNOW IF YOU'RE      !
+!    LETTING YOUR USERS DOWN. YOU SHOULD ADD A HEALTHCHECK FOR EACH OF YOUR    !
+!         APPLICATION'S DEPENDENCIES WHICH FULLY (BUT LIGHTLY) TESTS IT.       !
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+```
 * Adicionar plugins de contrucción del jar
 ```xml
     <build>
