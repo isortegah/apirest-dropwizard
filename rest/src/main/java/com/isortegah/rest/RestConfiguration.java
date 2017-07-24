@@ -1,6 +1,5 @@
 package com.isortegah.rest;
 
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.isortegah.dtos.configAws.ConfigAws;
 import io.dropwizard.Configuration;
