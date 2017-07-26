@@ -510,7 +510,9 @@ heroku run java -version
         </dependency>
     </dependencies>
 ```
+
 * Para resolver el problema de ejecución del `jar` del proyecto se requiere agregar lo siguiente en el `pom.xml`del modulo `rest`.
+
 ```xml
 <filters>
     <filter>
