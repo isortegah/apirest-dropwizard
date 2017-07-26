@@ -1,6 +1,7 @@
 package com.isortegah.rest.resources;
 
 import com.isortegah.dtos.config.ConfigTokenResource;
+import com.isortegah.services.token.TokenServiceProvider;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import javax.ws.rs.POST;
@@ -22,6 +23,7 @@ public class TokenResource {
 
     private static final Logger log = LogManager.getLogger("TokenResource");
     private final ConfigTokenResource config;
+    private TokenServiceProvider tokenSP;
     
     public TokenResource(ConfigTokenResource configTokenResource) {
         config = configTokenResource;
@@ -30,7 +32,9 @@ public class TokenResource {
     @POST
     @ApiOperation( value = "Solicita token de autenticación" ,notes="",  position = 0)
     public Response solicitaToken(){
-        return Response.status(Response.Status.CREATED).build();
+        tokenSP = new TokenServiceProvider( config );
+        return Response.status(Response.Status.CREATED)
+                .entity(tokenSP.getTokenJWT()).build();
     }
     
 }
