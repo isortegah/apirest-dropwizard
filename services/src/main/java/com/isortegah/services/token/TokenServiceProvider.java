@@ -20,7 +20,7 @@ public class TokenServiceProvider {
     
     public TokenResDTO getTokenJWT(){
         TokenResDTO tokenRes = new TokenResDTO();
-        token.generateToken();
+        tokenRes.setToken(token.generateToken());
         return tokenRes;
     }
     

@@ -169,6 +169,9 @@ Esto evitara que se muestre el mensaje:
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ```
+**Referencia**
+> [Application Health Checks with DropWizard](http://willhamill.com/2014/12/04/application-health-checks-with-dropwizard)
+> [Dropwizard Core](http://www.dropwizard.io/1.1.2/docs/manual/core.html#man-core-healthchecks)
 * Adicionar plugins de contrucción del jar
 ```xml
     <build>
