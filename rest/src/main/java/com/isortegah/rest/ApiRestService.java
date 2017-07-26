@@ -25,7 +25,6 @@ import org.apache.logging.log4j.Logger;
 public class ApiRestService extends Application<RestConfiguration>{
     
     private static final Logger log = LogManager.getLogger("ApiRestService");
-    private ConfigServices config;
     
     public static void main(String[] args) throws Exception {
             new ApiRestService().run(args);
@@ -44,21 +43,23 @@ public class ApiRestService extends Application<RestConfiguration>{
     @Override
     public void run(RestConfiguration configuration,
                     Environment environment) {
-        configFromAws( configuration.getAws() );
+        ResourceConfiguration config = 
+                new ResourceConfiguration(configFromAws( configuration.getAws() ));
         environment.healthChecks().register("app", new AppHealthCheck());
-        environment.jersey().register(new VersionResource());
-        environment.jersey().register(new TokenResource());
+        environment.jersey().register( new VersionResource() );
+        environment.jersey().register( new TokenResource( config.getConfigTokenResource() ));
     }
     
-    public void configFromAws( ConfigAws aws ){
+    public ConfigServices configFromAws( ConfigAws aws ){
         try {
-        AwsS3 awsS3 = new AwsS3( aws.getCredentialProvider() );
-        S3ObjectInputStream f = awsS3.getObjectBIS("configuraciones" , "apirestfullconfig.yml");
-        ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
-        config = mapper.readValue( f  , ConfigServices.class );
+            AwsS3 awsS3 = new AwsS3( aws.getCredentialProvider() );
+            S3ObjectInputStream f = awsS3.getObjectBIS("configuraciones" , "apirestfullconfig.yml");
+            ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
+            return mapper.readValue( f  , ConfigServices.class );
         } catch (IOException ex) {
             log.error( ex );
         }
+        return null;
     }
     
 }

@@ -1,5 +1,6 @@
 package com.isortegah.rest.resources;
 
+import com.isortegah.dtos.config.ConfigTokenResource;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import javax.ws.rs.POST;
@@ -20,8 +21,10 @@ import org.apache.logging.log4j.Logger;
 public class TokenResource {
 
     private static final Logger log = LogManager.getLogger("TokenResource");
+    private final ConfigTokenResource config;
     
-    public TokenResource() {
+    public TokenResource(ConfigTokenResource configTokenResource) {
+        config = configTokenResource;
     }
     
     @POST
