@@ -500,7 +500,7 @@ heroku run java -version
 
 > ![alt text](imgs/netbeans7.png "Seleccionar JavaApplication")
 
-* Agregar dependencia al `pom.xml``
+* Agregar dependencia al `pom.xml` del modulo `authentication`
 ```xml
 <dependencies>
         <dependency>
@@ -510,6 +510,20 @@ heroku run java -version
         </dependency>
     </dependencies>
 ```
+* Para resolver el problema de ejecución del `jar` del proyecto se requiere agregar lo siguiente en el `pom.xml`del modulo `rest`.
+```xml
+<filters>
+    <filter>
+        <artifact>*:*</artifact>
+        <excludes>
+            <exclude>META-INF/*.SF</exclude>
+            <exclude>META-INF/*.DSA</exclude>
+            <exclude>META-INF/*.RSA</exclude>
+        </excludes>
+    </filter>
+</filters>
+``` 
+* Verificar los cambios implementados para la funcionalidad de generar un token simple en [GitHub](https://github.com/isortegah/apirest-full/compare/2e8ffb88afcba8ccfde52808ec06b55266fa16e9...8921a4723d295297cd69f2a6a716dc2b98273bda).  
 
 **Referencia**
 > [java-jwt](https://github.com/auth0/java-jwt)
