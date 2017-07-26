@@ -6,7 +6,8 @@ import com.codahale.metrics.health.HealthCheck;
  *
  * @author ISORTEGAH
  */
-public class DummyHealthCheck extends HealthCheck {
+public class AppHealthCheck extends HealthCheck {
+    
     @Override
     protected Result check() throws Exception {
         return Result.healthy();

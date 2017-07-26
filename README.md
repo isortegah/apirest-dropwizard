@@ -139,9 +139,9 @@ public class ApiRestService extends Application<RestConfiguration>{
 ```
 * Adicionar `healthCheck`  
 
-Archivo `DummyHealthCheck.java`
+Archivo `AppHealthCheck.java`
 ```java
-public class DummyHealthCheck extends HealthCheck {
+public class AppHealthCheck extends HealthCheck {
     @Override
     protected Result check() throws Exception {
         return Result.healthy();
@@ -155,7 +155,7 @@ Adicionar al archivo `ApiRestService.java`
     public void run(RestConfiguration configuration,
                     Environment environment) {
         configFromAws( configuration.getAws() );
-        environment.healthChecks().register("dummy", new DummyHealthCheck());
+        environment.healthChecks().register("app", new AppHealthCheck());
     }
 ```
 Esto evitara que se muestre el mensaje:

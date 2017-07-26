@@ -6,7 +6,7 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.isortegah.aws.AwsS3;
 import com.isortegah.dtos.config.ConfigServices;
 import com.isortegah.dtos.configAws.ConfigAws;
-import com.isortegah.rest.resources.DummyHealthCheck;
+import com.isortegah.rest.resources.AppHealthCheck;
 import com.isortegah.rest.resources.TokenResource;
 import com.isortegah.rest.resources.VersionResource;
 import io.dropwizard.Application;
@@ -45,7 +45,7 @@ public class ApiRestService extends Application<RestConfiguration>{
     public void run(RestConfiguration configuration,
                     Environment environment) {
         configFromAws( configuration.getAws() );
-        environment.healthChecks().register("dummy", new DummyHealthCheck());
+        environment.healthChecks().register("app", new AppHealthCheck());
         environment.jersey().register(new VersionResource());
         environment.jersey().register(new TokenResource());
     }
