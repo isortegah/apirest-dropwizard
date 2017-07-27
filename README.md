@@ -1,4 +1,4 @@
-# APIREST-FULL
+# APIREST-FUL
 
 ## Indice
 ### Iniciando Proyecto Base
@@ -349,6 +349,7 @@ public class VersionDTO {
 ## Proceso de dockerizacion
 
 1. Crear `Dockerfile`
+
 ```bash
 FROM isortegah/java8:v1
 
@@ -365,11 +366,13 @@ ADD config.yml config.yml
 ENTRYPOINT ["/bin/bash", "./bootstrap.sh"]
 ```
 2. Crear archivo `bootstrap.sh`
+
 ```bash
 #!/usr/bin/env bash
 java -jar rest.jar server config.yml
 ```
 3. Construcción de imagen
+
 ```
 docker build -t api-rest .
 ```
@@ -380,15 +383,18 @@ docker build -t api-rest .
 docker run -it -p 8080:8080 < imagen id >
 ```
 5. Ejecutar bash
+
 ```
 docker exec -it < id container > /bin/bash
 ```
 
 6. Borrar contenedores finalizados
+
 ```
 docker ps -a | egrep Exited | cut -d ' ' -f 1|xargs docker rm
 ```
 7. Borrar imagenes < none >
+
 ```
 docker images | egrep none | cut -c 41-53| xargs docker rmi
 ```
@@ -397,6 +403,7 @@ docker images | egrep none | cut -c 41-53| xargs docker rmi
 ## Log4j2
 
 * Agregar al POM del proyecto la siguiente dependencia:
+
 ```xml
 <dependency> 
     <groupId>org.apache.logging.log4j</groupId> 
@@ -411,6 +418,7 @@ docker images | egrep none | cut -c 41-53| xargs docker rmi
 ![alt text](imgs/proyecto2.png)   
 
 * Código Java  
+
 ```java
 import org.apache.logging.log4j.LogManager; 
 import org.apache.logging.log4j.Logger; 
@@ -421,6 +429,8 @@ private static final Logger log = LogManager.getLogger("VersionResource");
 //Ejemplo de implementación
 log.info("Se requiere servicio version"); 
 ```
+**Referencias**
+
 [Log4j Users Guide](http://logging.apache.org/log4j/2.0/log4j-users-guide.pdf)  
 [Referencia 1](https://logging.apache.org/log4j/2.x/manual/configuration.html#Properties)  
 [Referencia 2](http://www.journaldev.com/7128/log4j2-example-tutorial-configuration-levels-appenders)  
