@@ -1,4 +1,4 @@
-# APIREST-FUL
+# APIREST-DROPWIZARD
 
 ## Indice
 ### Iniciando Proyecto Base
@@ -564,7 +564,20 @@ aws:
   credentialProvider: < File|Environment >
 ```
 
-Se implementan dos formas para la obtencion de las credenciales de `aws`, por el archivo `credentials`y por variables de ambiente.
+Se implementan dos formas para la obtencion de las credenciales de `aws`, por el archivo 
+`credentials`y por variables de ambiente.
+
+El archivo `credentials` debe estar ubicado en el `HOME` del usuario:
+
+ ```bash
+~/.aws/credentials
+
+~/ cat .aws/credentials
+
+[default]
+aws_secret_access_key=aaaa
+aws_access_key_id=zzzz
+```
 
 Para la implementación de las credienciales verificar en el resultado del siguiente [Compare en gitHub](https://github.com/isortegah/apirest-full/compare/4d3a91486f242db456f063ba5c7bbaa80419d209...fa5addc0fb57a98174f44edbeae5235af2657274) los cambios a los siguientes archivos:
 

@@ -7,11 +7,11 @@
     <packaging>pom</packaging>
     <name>apirest-full</name>
     <modules>
-        <module>rest</module>
         <module>dtos</module>
         <module>aws</module>
         <module>authentication</module>
         <module>services</module>
+        <module>rest</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
