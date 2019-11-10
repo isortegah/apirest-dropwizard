@@ -15,7 +15,7 @@ RUN mkdir -p /app
 WORKDIR /app
 
 ADD bootstrap.sh bootstrap.sh
-ADD rest/target/rest-0.1-SNAPSHOT.jar rest.jar
+ADD rest/target/rest-0.2.0-SNAPSHOT.jar rest.jar
 ADD config.yml config.yml
 
 CMD ["/bin/bash", "./bootstrap.sh"]

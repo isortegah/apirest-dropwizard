@@ -453,6 +453,16 @@ heroku create < nombre app >
 heroku buildpacks:set heroku/java
 ```
 
+* Establecer stack para despliegue con git
+```
+ heroku stack:set heroku-18
+```
+
+* Establecer stack para despliegue como [docker](https://devcenter.heroku.com/articles/build-docker-images-heroku-yml)
+```
+ heroku stack:set container
+```
+
 Despliege en Heroku 
 * Crear archivo `Procfile``
 ```bash
@@ -463,9 +473,9 @@ web: java -Ddw.server.applicationConnectors[0].port=$PORT -jar rest/target/rest-
 git push heroku master
 ```
 
-Esta aplicación la podemos ver funcionando en [api.isortegah.com/swagger](http://api.isortegah.com/swagger) **Nota:** Se encuentra desplegada como contenedor Docker.
+Esta aplicación la podemos ver funcionando en [api.isortegah.me/swagger](http://api.isortegah.me/swagger) **Nota:** Se encuentra desplegada como contenedor Docker.
 
-**Despliegue en heroku como docker**
+**Despliegue en [heroku](https://github.com/heroku/heroku-container-registry) como docker**
 
 * Instalar plugin
 ```
@@ -478,6 +488,10 @@ heroku container:login
 * Push codigo
 ```
 heroku container:push web
+```
+* Desplegar como docker
+```
+heroku container:release web
 ```
 * Correr bash en heroku
 ```
