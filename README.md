@@ -456,7 +456,7 @@ heroku buildpacks:set heroku/java
 Despliege en Heroku 
 * Crear archivo `Procfile``
 ```bash
-web: java -Ddw.server.applicationConnectors[0].port=$PORT -jar rest/target/rest-0.1-SNAPSHOT.jar server config.yml
+web: java -Ddw.server.applicationConnectors[0].port=$PORT -jar rest/target/rest-0.2.0-SNAPSHOT.jar server config.yml
 ```
 * Desplegar app
 ```
@@ -554,19 +554,24 @@ heroku run java -version
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-java-sdk-s3</artifactId>
-            <version>1.11.163</version>
+            <version>1.11.671</version>
         </dependency> 
     </dependencies>
 ```
 * Adicionar al archivo `config.yml` la configuración para `aws`
 ```yaml
 aws: 
-  credentialProvider: < File|Environment >
+  credentialProvider: < File|Environment > @Deprecated
+  region: <Clave de region aws>
 ```
 
-Se implementan dos formas para la obtencion de las credenciales de `aws`, por el archivo 
-`credentials`y por variables de ambiente.
+Se depreco el uso de la clase `AmazonS3Client` y se implemento `AmazonS3Client`,
+para revisar la antigua documentación dirijase a la doc [aws](./docs/aws.md)
 
+Con la implementación de la clase `AmazonS3Client`, las credenciales para la conexión
+a `aws` es man sencilla, ya que toma las credneicales del archivo `~/.aws/credentials`
+si existe, y de lo contrario busca las variables de ambiente.
+ 
 El archivo `credentials` debe estar ubicado en el `HOME` del usuario:
 
  ```bash
@@ -578,15 +583,6 @@ El archivo `credentials` debe estar ubicado en el `HOME` del usuario:
 aws_secret_access_key=aaaa
 aws_access_key_id=zzzz
 ```
-
-Para la implementación de las credienciales verificar en el resultado del siguiente [Compare en gitHub](https://github.com/isortegah/apirest-full/compare/4d3a91486f242db456f063ba5c7bbaa80419d209...fa5addc0fb57a98174f44edbeae5235af2657274) los cambios a los siguientes archivos:
-
-> `rest/src/main/java/com/isortegah/rest/ApiRestService.java`
-> `rest/src/main/java/com/isortegah/rest/RestConfiguration.java`
-> `aws/pom.xm`
-> `aws/src/main/java/com/isortegah/aws/AwsCredentials.java`
-> `aws/src/main/java/com/isortegah/aws/AwsS3.java`
-> `dtos/src/main/java/com/isortegah/dtos/configAws/ConfigAws.java`
 
 Para el caso de las credenciales vía variables de ambiente el proceso es el siguiente:
 
@@ -612,11 +608,8 @@ java -jar rest/target/rest-0.1-SNAPSHOT.jar server config.yml
 ```yaml
 aws: 
   credentialProvider: Environment
+  region: US_EAST_1
 ``` 
-
-Para la implementación de las credenciales vía variables de ambiente ver la siguiente [Comparación en github](https://github.com/isortegah/apirest-full/compare/8fc54b34f077b1752faa978dee0b07db91f0834d...cbd8c5ebd75e82e147f950b187a13b05be380727), los archivos a revisar son:
-
-> `aws/src/main/java/com/isortegah/aws/AwsCredentials.java`
 
 **Ejecución**
 

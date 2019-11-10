@@ -52,7 +52,7 @@ public class ApiRestService extends Application<RestConfiguration>{
     
     public ConfigServices configFromAws( ConfigAws aws ){
         try {
-            AwsS3 awsS3 = new AwsS3( aws.getCredentialProvider() );
+            AwsS3 awsS3 = new AwsS3(aws);
             S3ObjectInputStream f = awsS3.getObjectBIS("configuraciones" , "apirestfullconfig.yml");
             ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
             return mapper.readValue( f  , ConfigServices.class );
