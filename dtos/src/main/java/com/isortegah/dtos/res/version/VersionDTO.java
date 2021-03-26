@@ -9,10 +9,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class VersionDTO {
     
     @JsonProperty
-    private String nombre = "Versión 0.0.1-SNAPSHOT";
+    private String nombre = "Versión 0.1.0-SNAPSHOT";
 
     @JsonProperty
-    private String numero = "0.0.1";
+    private String numero = "0.1.0";
     
     @JsonProperty
     private String autor = "ISORTEGAH";
