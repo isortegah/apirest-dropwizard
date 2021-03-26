@@ -4,7 +4,7 @@
     <parent>
         <groupId>com.isortegah</groupId>
         <artifactId>apirest-full</artifactId>
-        <version>0.1-SNAPSHOT</version>
+        <version>0.2.0-SNAPSHOT</version>
     </parent>
     <artifactId>aws</artifactId>
     <packaging>jar</packaging>
@@ -21,7 +21,13 @@
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-java-sdk-s3</artifactId>
-            <version>1.11.163</version>
-        </dependency> 
+            <version>1.11.671</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>dtos</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
 </project>

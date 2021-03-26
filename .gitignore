@@ -27,3 +27,7 @@ rest/target/rest-0\.1-SNAPSHOT\.jar
 \.env
 /authentication/target/
 /services/target/
+.idea
+**/target
+*.iml
+.aws
